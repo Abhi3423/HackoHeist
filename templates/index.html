@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../static/images/logo/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../static/images/logo/favicon-16x16.png">
   <!-- <link rel="manifest" href="/site.webmanifest"> -->
-  <link rel="stylesheet" href="/static/css/style1.css">
+  <link rel="stylesheet" href="/static/css/index.css">
   <link rel="stylesheet" href="/static/css/slideshow.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
@@ -40,12 +40,14 @@
       align-items: center;
       padding-top: 4%;
     }
+
     .column {
       float: right;
       width: 33.33%;
       padding: 15px;
     }
-    #content{
+
+    #content {
       margin-top: 5%;
       margin-left: 10%;
       margin-right: 10%;
@@ -54,7 +56,7 @@
 
 </head>
 
-<body id="grad1">
+<body id="grade1">
   <nav class="navbar navbar-expand-lg navbar-light"
     style="background-color:#6977f2; position:sticky; top:0px; height:70px; z-index: 100; ">
 
@@ -88,7 +90,7 @@
           <a class="nav-link" href="aboutus.html" style="color: white;">About Us</a>
         </li>
       </ul>
-      <button onclick="location.href = 'login_page.html'; " id="Login"
+      <button onclick="openNav(); check();" id="Login1"
         style="margin: 20px;background-color: white;padding: 6.5px; border-radius: 5px; border-color: #6990F2;">Login /
         Sign up</button>
       <form class="d-flex">
@@ -99,6 +101,69 @@
     </div>
     </div>
   </nav>
+
+
+
+
+  <div id="popup" class="wrapper">
+    <a href="#" className="closebtn" id="close" style=" position: absolute;font-size: 3.2vw;margin-left: 20vw;margin-top:-2%;" onClick="closeNav();check();">&times;</a>
+    <div id="title" class="title-text">
+      <div class="title login">
+        Login Form
+      </div>
+      <div class="title signup">
+        Signup Form
+      </div>
+    </div>
+    <div  class="form-container">
+      <div id="cont" class="slide-controls">
+        <input type="radio" name="slide" id="login" checked>
+        <input type="radio" name="slide" id="signup">
+        <label for="login" class="slide login">Login</label>
+        <label for="signup" class="slide signup">Signup</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form action="#" class="login">
+          <div class="field">
+            <input type="text" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" required>
+          </div>
+          <div class="pass-link">
+            <a href="#">Forgot password?</a>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">
+            Not a member? <a href="">Signup now</a>
+          </div>
+        </form>
+        <form action="#" class="signup">
+          <div class="field">
+            <input type="text" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" required>
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Confirm password" required>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Signup">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
 
   <div class="container1" style="margin-top:-8px;">
@@ -200,7 +265,8 @@
   <div class="shadow p-3 mb-5 bg-body rounded" id="content">
     <div class="row">
       <div class="column">
-        <p style="margin-left:5%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        <p style="margin-left:5%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+          has been the
           industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
           electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
@@ -208,54 +274,54 @@
           PageMaker including versions of Lorem Ipsum.</p>
       </div>
       <div class="column">
-        <img src="/images/img1.jpg" alt="">
+        <img src="./static/images/plag_img.jpg" alt="">
       </div>
     </div>
   </div>
 
 
-    <div id="view_projects">
-      <button type="button" class="btn btn-primary btn-lg" onclick="openprojects()">View Projects</button>
+  <div id="view_projects">
+    <button type="button" class="btn btn-primary btn-lg" onclick="openprojects()">View Projects</button>
+  </div>
+  <div class="container my-5" id="projects" style="display: none;">
+    <div class="row" id="boxes">
     </div>
-    <div class="container my-5" id="projects" style="display: none;">
-      <div class="row" id="boxes">
-      </div>
-    </div>
+  </div>
 
-    <div class="bu">
-      <h2><span>Documents</span></h2>
-    </div>
+  <div class="bu">
+    <h2><span>Documents</span></h2>
+  </div>
 
-    <section class="testimonial">
-      <div class="container">
+  <section class="testimonial">
+    <div class="container">
 
-        <div class="row">
-          <div class="clients-carousel owl-carousel">
-            <div class="single-box">
+      <div class="row">
+        <div class="clients-carousel owl-carousel">
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
-            <div class="single-box">
+          </div>
+          <div class="single-box">
 
-            </div>
           </div>
         </div>
       </div>
-  </div>
+    </div>
+    </div>
   </section>
 
 
@@ -296,6 +362,24 @@
         x.style.display = "none";
       }
     }
+
+    function openNav() {
+      document.getElementById("popup").style.width = "390px";
+    }
+
+    function closeNav() {
+      document.getElementById("popup").style.width = "0";
+    }
+
+    function check() {
+      console.log(5);
+      var element= document.getElementById("grade1");
+      element.classList.toggle("active");
+      var popup2 = (document.querySelectorAll("#popup, #cont, #title"));
+      popup2.forEach(x => x.classList.toggle("active"));
+      console.log(8);
+    }
+
   </script>
   <script>
     $('.clients-carousel').owlCarousel({
