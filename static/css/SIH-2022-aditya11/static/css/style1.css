@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+
+* {
+  box-sizing: border-box; 
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+#grad1{
+    /* min-height: 300vh; */
+    background: linear-gradient(to bottom left, #80FFDB, #5390D9 );
+}
+
+ /* width */
+::-webkit-scrollbar { 
+   width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+   box-shadow: inset 0 0 5px grey; 
+   border-radius: 10px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: rgba(76, 0, 255, 0.884); 
+   border-radius: 10px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #7100b3; 
+}
+
+
+.nb
+{
+    background-color: aqua;
+}
+
+.searchh:hover {
+    color: black;
+
+}
+
+#Login:hover{
+    background-color: gray;
+    color: black;
+}
+
+#menuheadcontent{
+  display:block; 
+  height:10%; 
+  margin-left: 40px; 
+  font-size:200%; 
+  border-radius: 10px; 
+  background: linear-gradient(to right, #f46b45, #eea849 );  
+}
+
+#bar{
+  
+  position: absolute;
+  top: 10%;
+  margin-top:35%;
+  margin-left: -45%;
+  left: calc(50% - 2.5vmin);
+  border-radius: 5vmin/4vmin;
+  width: 40vmin;
+  height: 5vmin;
+  background: 
+    linear-gradient(to right, rgba(165, 42, 42, 0.911),rgba(165, 42, 42, 0.651) 80%);
+}
+
+footer {
+    display: flex;
+    overflow: hidden;
+    /* Hide overflow */
+    background-color: black;
+    /* Dark background color */
+  }
+  
+  footer a {
+    float: left;
+    /* Make sure that the links stay side-by-side */
+    display: block;
+    /* Change the display to block, for responsive reasons (see below) */
+    color: white;
+    /* White text color */
+    text-align: center;
+    /* Center the text */
+    padding: 14px 20px;
+    /* Add some padding */
+    text-decoration: none;
+    /* Remove underline */
+  }
+  
+  .copyright {
+    color: #fff;
+    /* to align item to left */
+    margin-left: auto;
+    padding-right: 15px;
+  }
+  
+  .flex-align-left {
+    margin-left: auto;
+  }
+  
+  @media screen and (max-width: 700px) {
+    footer {
+      flex-direction: column;
+      padding: 10px 0px;
+    }
+  
+    .flex-align-left {
+      margin-left: 0;
+    }
+  }
+
+  

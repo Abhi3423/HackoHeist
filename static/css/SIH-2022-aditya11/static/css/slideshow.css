@@ -1,0 +1,46 @@
+.prev{
+    position: absolute;
+    margin-left: 5%; 
+    width: auto; 
+    font-weight: bold;
+    font-size: 6vw;
+    position: absolute;
+    top: 12%;
+    border-radius: 0 3px 3px 0;
+    user-select: none; 
+    cursor: pointer; 
+    color: white;
+}
+
+.next{
+    margin-left: 90%; 
+    width: auto; 
+    font-weight: bold;
+    font-size: 6vw;
+    position: absolute;
+    top: 12%;
+    border-radius: 0 3px 3px 0;
+    user-select: none; 
+    cursor: pointer; 
+    color: white; 
+}
+
+.next:hover , .prev:hover {
+    color: grey;
+}
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+.active, .dot:hover {
+    background-color: #717171;
+}
+  
