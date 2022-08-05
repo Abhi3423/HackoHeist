@@ -7,9 +7,9 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
   min-height: 100vh;
   background: #6990F2;
   
@@ -19,12 +19,23 @@ body{
   color: #fff;
   background: #6990F2;
 }
-.wrapper{
-  width: 430px;
+.head_file{
+  width: 80%;
+  height: 8vh;
+  margin-left: 20%;
+  margin-top: -47%;
   background: #fff;
-  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 10px 10px 10px rgb(0 0 0 / 17%);
+}
+.wrapper{
+  width: 25%;
+  margin-left: 45%;
+  margin-top: 5%;
+  background: #fff;
+  border-radius: 10px;
   padding: 30px;
-  box-shadow: 7px 7px 12px rgba(0,0,0,0.05);
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.174);
 }
 .wrapper header{
   color: #6990F2;
@@ -33,7 +44,7 @@ body{
   text-align: center;
 }
 .wrapper .inputs{
-  height: 167px;
+  height: 22vh;
   display: flex;
   cursor: pointer;
   margin: 30px 0;
@@ -149,11 +160,11 @@ section .details span{
 #btn{
   justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 6vh;
   border: 1px solid;
   background: #2691d9;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 150%;
   color: #e9f4fb;
   font-weight: 700;
   cursor: pointer;
@@ -162,4 +173,11 @@ section .details span{
 #btn:hover{
   border-color: #2691d9;
   transition: .5s;
+}
+
+.home{
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding:0 15rem;
 }
