@@ -24,13 +24,13 @@ app = Flask(__name__)
 app.secret_key = "Bits-Space"
 CORS(app)
 
-
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
+current_user = "not_defined"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('home.html')
+    return render_template('home.html', current_user_id=current_user)
 
 @app.route('/show_projects', methods=['GET','POST'])
 def show():
@@ -98,6 +98,8 @@ def login():
 
 @app.route("/callback")
 def callback():
+    global current_user
+    
     flow.fetch_token(authorization_response=request.url)
 
     if not session["state"] == request.args["state"]:
@@ -122,6 +124,17 @@ def callback():
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     session["email"] = id_info.get("email")
+    
+    current_user = id_info.get("sub")
+      
+    with open('./static/json/user_id.json', 'r') as u:
+        user_id_json_data = json.load(u)
+        
+    user_id_json_data[id_info.get("sub")] = { "user_name" : id_info.get("name") , "user_email" : id_info.get("email")}
+    
+    with open('./static/json/user_id.json', 'w') as y:
+        json.dump(user_id_json_data, y)
+        
     return redirect("/protected_area")
 
 
@@ -135,7 +148,7 @@ def logout():
 @app.route("/protected_area")
 @login_is_required
 def protected_area():
-    return f"Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
+    return current_user
 
 
 

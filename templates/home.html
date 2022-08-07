@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                <a href="/show_projects"><button type="button" class="btn btn-outline-secondary mx-2" style="border-radius: 15px 15px 15px 15px ;">View Projects</button></a>
-                <button href="/login" class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>
+               <a id="join">
             </div>
         </div>
     </nav>
@@ -131,5 +131,43 @@
         </div>
     </section>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const navbar_join = document.getElementById('join')
+
+        current_user = {{ current_user_id | tojson}}
+        console.log(typeof current_user)
+
+        var id_json
+
+        function data_read(){
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', '/static/json/user_id.json', true)
+        
+            xhr.onload = function () {
+                jsondata = JSON.parse(this.responseText)
+        
+                id_json = jsondata
+            }
+            xhr.send()
+            return 0
+        }
+
+        async function data_load() {
+            const id_data = await data_read()
+        }
+
+
+        if( current_user == "not_defined") {
+            navbar_join.innerHTML = `<button href="/login" class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>`
+        }
+        else {
+            data_load()
+            console.log(id_json)
+            navbar_join.innerHTML = `<a>${id_json[current_user][name]}</a>`
+        }
+
+
+    </script>
 </body>
 </html>
