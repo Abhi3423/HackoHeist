@@ -28,9 +28,13 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 current_user = "not_defined"
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('home.html', current_user_id=current_user)
+
+
+
 
 @app.route('/show_projects', methods=['GET','POST'])
 def show():
@@ -43,7 +47,9 @@ def show():
             
         pdf_download_data = download(name_of_pdf[pointer])
         return pdf_download_data
-    return render_template('index.html')
+    return render_template('index.html',current_user_id=current_user)
+    
+    
     
     
 @app.route('/upload_pdf', methods=['GET', 'POST'])
@@ -121,7 +127,7 @@ def callback():
     print(id_info.get("name"))
     print(id_info.get("email"))
     print(id_info.get("picture"))
-    print(id_info.get("birthday"))
+    print(id_info.get("gender"))
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     session["email"] = id_info.get("email")
@@ -131,7 +137,7 @@ def callback():
     with open('./static/json/user_id.json', 'r') as u:
         user_id_json_data = json.load(u)
         
-    user_id_json_data[id_info.get("sub")] = { "user_name" : id_info.get("name") , "user_email" : id_info.get("email")}
+    user_id_json_data[id_info.get("sub")] = { "user_name" : id_info.get("name") , "user_email" : id_info.get("email"), "user_dp": id_info.get("picture")}
     
     with open('./static/json/user_id.json', 'w') as y:
         json.dump(user_id_json_data, y)

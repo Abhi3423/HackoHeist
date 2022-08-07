@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                <a href="/show_projects"><button type="button" class="btn btn-outline-secondary mx-2" style="border-radius: 15px 15px 15px 15px ;">View Projects</button></a>
-               <a id="join">
+               <a href="/login" id="join">
             </div>
         </div>
     </nav>
@@ -160,7 +160,8 @@
 
         function rundata() {
             console.log(id_json)
-            navbar_join.innerHTML = `<a>${id_json[current_user]["user_name"]}</a>`
+            navbar_join.innerHTML = `<a  style='font-weight: 1000;font-size: 20px;margin-left: 20%;'> ${id_json[current_user]["user_name"]}</a>
+                                     <img src="${id_json[current_user]["user_dp"]}" style='border-radius: 100%;height: 6vh;width: 4vw;margin-left: 100%;margin-top: -20%'>`
         }
 
 
