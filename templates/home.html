@@ -155,6 +155,12 @@
 
         async function data_load() {
             const id_data = await data_read()
+            const mytimeout = setTimeout(rundata, 2000)
+        }
+
+        function rundata() {
+            console.log(id_json)
+            navbar_join.innerHTML = `<a>${id_json[current_user]["user_name"]}</a>`
         }
 
 
@@ -163,8 +169,6 @@
         }
         else {
             data_load()
-            console.log(id_json)
-            navbar_join.innerHTML = `<a>${id_json[current_user][name]}</a>`
         }
 
 

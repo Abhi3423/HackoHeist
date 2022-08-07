@@ -135,7 +135,7 @@ def callback():
     with open('./static/json/user_id.json', 'w') as y:
         json.dump(user_id_json_data, y)
         
-    return redirect("/protected_area")
+    return redirect("/")
 
 
 @app.route("/logout")
@@ -145,10 +145,10 @@ def logout():
 
 
 
-@app.route("/protected_area")
-@login_is_required
-def protected_area():
-    return current_user
+# @app.route("/protected_area")
+# @login_is_required
+# def protected_area():
+#     return current_user
 
 
 

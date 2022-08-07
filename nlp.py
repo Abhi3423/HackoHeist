@@ -2,6 +2,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
+from server import current_user
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -43,5 +44,13 @@ def language_process(pages, pdf_name):
         
     with open('./static/json/pdf_name.json', 'w') as o:
         json.dump(data_name, o)
+        
+    with open('./static/json/pdf_id.json', 'r') as p:
+        id_for_pdf = json.load(p)
+    
+    id_for_pdf[data_length] = current_user
+    
+    with open('./static/json/pdf_id.json', 'w') as x:
+        json.dump(id_for_pdf, x)
         
     return uploaded_token
