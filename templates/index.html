@@ -326,7 +326,7 @@
 
     async function downloader(pointer) {
 
-      const pdf_response = await fetch(`/`, { method: 'POST', body: String(pointer), headers: { 'Content-Type': 'text/plain' } })
+      const pdf_response = await fetch(`/show_projects`, { method: 'POST', body: String(pointer), headers: { 'Content-Type': 'text/plain' } })
 
       const response = await pdf_response.blob()
 

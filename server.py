@@ -14,15 +14,6 @@ CORS(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        pointer = request.get_data()
-        
-        pointer = pointer.decode('utf-8')
-        with open('./static/json/pdf_name.json', 'r') as u:
-            name_of_pdf = json.load(u)
-            
-        pdf_download_data = download(name_of_pdf[pointer])
-        return pdf_download_data
     return render_template('home.html')
 
 @app.route('/show_projects', methods=['GET','POST'])
