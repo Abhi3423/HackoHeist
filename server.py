@@ -6,7 +6,7 @@ import base64
 import json
 
 from image_pdf import pdfToImg
-from nlp import language_process
+from nlp import language_process, pdf_id_init
 from plagarism import plager
 
 
@@ -63,6 +63,7 @@ def pdf():
         mongo_pdf(encoded_pdf_utf, pdf_base64['pdf_name'])
         pdf_pages = pdfToImg(enc_pdf, pdf_base64['pdf_name'])
         pdf_token = language_process(pdf_pages, pdf_base64['pdf_name'])
+        pdf_id_init(current_user)
         plager(pdf_token, pdf_base64['pdf_name'])
         
     return render_template('upload_page.html')
