@@ -3,39 +3,52 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   font-family: "Poppins", sans-serif;
 }
+
 body{
-  /* display: flex; */
+  display: flex;
   /* align-items: center; */
   /* justify-content: center; */
   min-height: 100vh;
-  background: #6990F2;
+  width: 100%;
+  flex-direction:column;
+  /* background: #6990F2; */
+  scroll-behavior: smooth;
   
 }
-
+#head{
+  flex-direction: row;
+  margin-left: 30%;
+  
+  height: 6%;
+}
+#view_projects{
+    margin-top: 6%;
+    background-color: white;
+}
+#projects_section{
+    margin-left: 20%;
+    margin-top: 10%;
+    width: 80%;
+}
+#boxes{
+    margin-top: 5%;
+    margin-left: 20%;
+}
 ::selection{
   color: #fff;
   background: #6990F2;
 }
-.head_file{
-  width: 80%;
-  height: 8vh;
-  margin-left: 20%;
-  margin-top: -47%;
-  background: #fff;
-  padding: 10px;
-  box-shadow: 10px 10px 10px rgb(0 0 0 / 17%);
-}
 .wrapper{
-  width: 25%;
-  margin-left: 45%;
-  margin-top: 5%;
+  width: 40vw;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 35px;
   padding: 30px;
-  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.174);
+  box-shadow: 19px 20px 20px 12px rgb(0 0 0 / 5%);
+  margin-left: 40%;
+  margin-top: 5%;
 }
 .wrapper header{
   color: #6990F2;
@@ -44,7 +57,7 @@ body{
   text-align: center;
 }
 .wrapper .inputs{
-  height: 22vh;
+  height: 167px;
   display: flex;
   cursor: pointer;
   margin: 30px 0;
@@ -73,7 +86,7 @@ section .row{
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:normal;
 }
 section .row i{
   color: #6990F2;
@@ -160,11 +173,11 @@ section .details span{
 #btn{
   justify-content: center;
   width: 100%;
-  height: 6vh;
+  height: 50px;
   border: 1px solid;
   background: #2691d9;
   border-radius: 25px;
-  font-size: 150%;
+  font-size: 18px;
   color: #e9f4fb;
   font-weight: 700;
   cursor: pointer;
@@ -173,11 +186,4 @@ section .details span{
 #btn:hover{
   border-color: #2691d9;
   transition: .5s;
-}
-
-.home{
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-  padding:0 15rem;
 }

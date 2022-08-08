@@ -1,46 +1,251 @@
-
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caching Analysts-Upload</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/logo/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../static/images/logo/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../static/images/logo/favicon-16x16.png">
-<!-- <link rel="manifest" href="/site.webmanifest"> -->
-  <link rel="stylesheet" href="/static/css/profilenav.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile</title>
   <link rel="stylesheet" href="/static/css/style_upload.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
-<body>
-  <!-- <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav(); check();">&times;</a>
-    <a href="#">Profile</a>
-  </div>
+<style>
+  @media screen and (min-width:992px) {
 
-  <div id="start" class="topnav" >
-   <div style="font-size:30px;cursor:pointer;color:white;position:absolute;top:10px;left:15px;width: 100%;">&#9776; </div>
-  </div> -->
-   
-<div class="top">
-  <div class="wrapper">
-    <header>File Uploader</header>
-    <div class="inputs">
-      <input class="file-input" type="file" id="file_input" accept="application/pdf" hidden>
-      <i class="fas fa-cloud-upload-alt"></i>
-      <p id="upload_fileName">Browse File to Upload</p>
-  </div>
-    <section class="progress-area"></section>
-    <section class="uploaded-area"></section>
+    .navbar .container,
+    .navbar-expand-lg .navbar-collapse,
+    .navbar-expand-lg .navbar-nav {
+      flex-direction: column;
+    }
 
-    <!-- <button onclick="location.href = 'index.html';" id="myButton" class="float-left submit-button" >Home</button> -->
-    <div class="sub">
-      <button id='btn'>Upload</button>
+    .navbar {
+      width: 20%;
+      height: 100vh;
+      align-items: flex-start;
+    }
+  }
+
+  #head {
+    flex-direction: row;
+    margin-left: 20%;
+    text-align: right;
+    font-size: large;
+  }
+
+  #head2 {
+    margin-top: 10%;
+    margin-left: 20%;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+  }
+</style>
+
+<body style="background-color:aliceblue">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark border border-secondary"
+    style="background-color:aliceblue ; position:fixed">
+    <div class="container">
+      <img src="/static/images/DocLAb.png" alt="" width="100%" height="100%" class="d-inline-block align-text-top"
+        style="padding:5%" href="/"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse my-2 mx-5" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto  mb-lg-0" style="align-items:center" >
+          <div class="profile">
+            <hr>
+            <p><img src="/static/images/img1.jpg" alt="" style="width:32px;height:32px;border-radius:50%;"><b
+                style="margin-left:6px">DocLab Member</b></p>
+            <p style="font-size:smaller">Email: doclabmember@gmail.com</p>
+            <p style="font-size:small;background-color:rgb(202, 222, 239)">Total number of doccuments uploade: 100</p>
+            <hr>
+          </div>
+          <li class="nav-item" style="align-items:center" >
+            <a class="nav-link active" aria-current="page" href="/"
+              style="color:black; font-weight:bold;font-size:larger;">Home</a>
+              <hr>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#head"
+              style="color:black; font-weight:bold;font-size:larger">Upload File</a>
+              <hr>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#projects"
+              style="color:black; font-weight:bold;font-size:larger">My Projects</a>
+              <hr>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/show_projects"
+              style="color:black; font-weight:bold;font-size:larger">View Projects</a>
+              <hr>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/"
+              style="color:black; font-weight:bold;font-size:larger">Sign Out</a>
+              <hr>
+          </li>
+          <hr id="line" style="color:black">
+        </ul>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div class="shadow-sm p-3 mb-5 bg-body rounded" id="head">Hi! DocLab Member</div>
+
+  <!-- <div class="shadow p-3 mb-5 bg-body rounded">Regular shadow</div> -->
+
+  <div class="top">
+    <div class="wrapper" id="upload_file">
+      <header>File Uploader</header>
+      <div class="inputs">
+        <input class="file-input" type="file" id="file_input" accept="application/pdf" hidden>
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p id="upload_fileName">Browse File to Upload</p>
+      </div>
+      <section class="progress-area"></section>
+      <section class="uploaded-area"></section>
+
+      <!-- <button onclick="location.href = 'index.html';" id="myButton" class="float-left submit-button" >Home</button> -->
+      <div class="sub">
+        <button id='btn'>Upload</button>
+      </div>
     </div>
   </div>
-</div>
+
+
+  <div class="container" id="projects">
+    <div class="shadow-sm p-3 mb-5 bg-body rounded" id="head2">My Projects</div>
+    <div class="row" id="boxes">
+    </div>
+  </div>
+
+
+
+  <script>
+
+    var name_json
+    var plager_json
+
+    function ajax() {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', '/static/json/pdf_name.json', true)
+
+      xhr.onload = function () {
+        jsondata = JSON.parse(this.responseText)
+
+        name_json = jsondata
+      }
+      xhr.send()
+      return 0
+    }
+
+    function ajax2() {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', '/static/json/plager.json', true)
+
+      xhr.onload = function () {
+        jsondata2 = JSON.parse(this.responseText)
+
+        plager_json = jsondata2
+      }
+      xhr.send()
+      return 0
+    }
+
+
+    async function downloader(pointer) {
+
+      const pdf_response = await fetch(`/`, { method: 'POST', body: String(pointer), headers: { 'Content-Type': 'text/plain' } })
+
+      const response = await pdf_response.blob()
+
+      return response
+    }
+
+    function download(notation) {
+      downloader(notation).then(blob => {
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        note = String(notation)
+        a.download = name_json[note];
+        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        a.click();
+        a.remove();
+      })
+    }
+
+
+    async function run_js() {
+      const fist = await ajax()
+      const fist2 = await ajax2()
+      const mytimeout = setTimeout(addbox, 1500)
+    }
+
+    function addbox() {
+      console.log(name_json)
+      var nopdf = Object.keys(name_json).length
+      for (let i = 1; i < nopdf; i++) {
+        const div = document.createElement('div');
+
+        div.className = "col-md-4";
+
+
+        div.innerHTML = `
+              <div class=" mt-4">
+                <span class="card" style="width: 18rem; border-radius:10px 10px 10px 10px">
+                  <div class="card-img-top">
+                      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="/static/images/pdf_images/${name_json[i]}/page0.jpg" class="d-block w-100 h-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="/static/images/pdf_images/${name_json[i]}/page1.jpg" class="d-block w-100 h-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="/static/images/pdf_images/${name_json[i]}/page2.jpg" class="d-block w-100 h-100" alt="...">
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${name_json[i]}</h5>
+                    <p class="card-text">${plager_json[name_json[i]]}</p>
+                    <button href="#" class="btn btn-primary" onclick= "download(${i})">Download</button>
+                  </div>
+                </span>
+              </div>
+            `;
+
+        document.getElementById('boxes').appendChild(div);
+
+
+      }
+
+
+
+    }
+
+
+    run_js()
+  </script>
 
   <script src="../static/js/script_upload.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
