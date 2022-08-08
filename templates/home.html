@@ -15,6 +15,24 @@
 
     <title>DocLab|Home</title>
 </head>
+<style>
+    #gif{
+        width: 30%;
+        height: 30%;
+        float: left;
+        margin-bottom: 10%;
+    }
+    #accordionFlushExample{
+        float: right;
+        margin-top: 5%;
+    }
+    .accordion-flush .accordion-item .accordion-button {
+        border-radius: 10px;
+        background:aliceblue;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+
+    }
+</style>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
 
@@ -35,6 +53,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#aboutus" style="font-size: 18px;">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq" style="font-size: 18px;">FAQ</a>
                     </li>
                 </ul>
                <a href="/show_projects"><button type="button" class="btn btn-outline-secondary mx-2" style="border-radius: 15px 15px 15px 15px ;">View Projects</button></a>
@@ -84,7 +105,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="about card-effect">
                         <div class="iconbox">
-                            <i class='bx bxs-check-shield'></i>
+                            <i class='bx bxs-comment-detail'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Informative</h5>
                         <p>We are a hub of projects uploaded by peoples from different Insitutions.<br>
@@ -97,7 +118,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="about card-effect">
                         <div class="iconbox">
-                            <i class='bx bxs-check-shield'></i>
+                            <i class='bx bxs-rocket'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Recognition</h5>
                         <p>Nowadays Hardwork is shown by some real time projects you do and hardwork should be showcased to everyone. <br>
@@ -107,7 +128,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="about card-effect">
                         <div class="iconbox">
-                            <i class='bx bxs-check-shield'></i>
+                            <i class='bx bxs-doughnut-chart'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Storage</h5>
                         <p>Having Storage Problem for your projects ??<br>
@@ -119,7 +140,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="about card-effect">
                         <div class="iconbox">
-                            <i class='bx bxs-check-shield'></i>
+                            <i class='bx bx-accessibility'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Easy to Access</h5>
                         <p>Everything you need is just a click away !! <br>
@@ -131,7 +152,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="about card-effect">
                         <div class="iconbox">
-                            <i class='bx bxs-check-shield'></i>
+                            <i class='bx bxs-cog'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Security</h5>
                         <p>We respect Hardwork behind your Projects !!<br>
@@ -142,6 +163,71 @@
             </div>
         </div>
     </section>
+
+    <section id="faq">
+        <div class="container" >
+            <div class="row mb-5">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-primary">FAQ</h6>
+                    <h1>Frequently Asked Questions</h1>
+                </div>
+            </div>
+            <div  id="gif" ><img src="/static/images/finalgif.gif" alt=""></div>
+    
+            <div class="accordion accordion-flush col-8" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        How do I upload Projects ?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Just JOIN US from a google account. <br> And you are all set to Upload any file and show it to whole world.</div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        How many Projects can be uploaded ?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"> We do not set any limitations as of now. <br> You can Upload as many as you wish. Cheers!! </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        How do I view Projects ?
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"> Just select the option View Projects. <br> And Yes!! you took a dive in a sea of Knowledge. </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                          Where can I find Uploaded Projects ?
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body"> Just JOIN US from a google account. <br> Upload the Project and You can see it in the below section given in the account. </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                          Whom should I contact for further issues ?
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body"> Just drop a mail at connec8withus@gmail.com </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        </section>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
 
     <script>
