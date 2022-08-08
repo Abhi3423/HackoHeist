@@ -14,6 +14,10 @@ CORS(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    return render_template('home.html')
+
+@app.route('/show_projects', methods=['GET','POST'])
+def show():
     if request.method == 'POST':
         pointer = request.get_data()
         
@@ -24,6 +28,7 @@ def index():
         pdf_download_data = download(name_of_pdf[pointer])
         return pdf_download_data
     return render_template('index.html')
+    
     
 @app.route('/upload_pdf', methods=['GET', 'POST'])
 def pdf():
