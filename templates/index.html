@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/static/css/projectstyle.css">
     <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
 
-    <title>Caching Analysts-Home</title>
+    <title>Projects</title>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" id="grade1">
   <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-light">
@@ -384,7 +384,7 @@
                   <h5 class="card-title">${name_json[i]}</h5>
                   <p class="card-text">${plager_json[name_json[i]]}</p>
                   <button href="#" class="btn btn-primary" onclick= "download(${i})">Download</button>
-                  <button class="btn btn-primary">View</button>
+                  <button onclick="window.open('http://127.0.0.1:5000/', '_blank', 'fullscreen=yes'); return false;" class="btn btn-primary">View</button>
                 </div>
               </span>
             </div>
