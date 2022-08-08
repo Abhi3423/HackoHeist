@@ -72,7 +72,7 @@ def pdf():
         pdf_id_init(current_user)
         plager(pdf_token, pdf_base64['pdf_name'])
         
-    return render_template('upload_page.html')
+    return render_template('upload_page.html',current_user_id=current_user)
     
 
 
@@ -142,16 +142,30 @@ def callback():
     with open('./static/json/user_id.json', 'w') as y:
         json.dump(user_id_json_data, y)
         
-    return redirect("/")
+    return redirect("/upload_pdf")
 
 
 @app.route("/logout")
 def logout():
-    session.clear()
-    return redirect("/")
+     global current_user
+     session.clear()
+     current_user = "not_defined"
+     return redirect("/")
 
 
 
+# @app.route("/<filename>")
+# def show_file(filename):
+#     print(filename)
+    
+    
+    
+    
+    
+    
+    
+    
+    
 # @app.route("/protected_area")
 # @login_is_required
 # def protected_area():
