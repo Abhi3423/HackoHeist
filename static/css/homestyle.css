@@ -78,7 +78,11 @@ section {
     padding-top: 120px;
     padding-bottom: 120px;
 }
-
+#faq{
+    scroll-behavior:smooth;
+    padding-top: 2px;
+    padding-bottom: 0px;
+}
 .card-effect {
     box-shadow: var(--box-shadow);
     background-color: var(--white);
@@ -86,10 +90,10 @@ section {
     transition: all 0.35s ease;
 }
 
-/* .card-effect:hover {
-    box-shadow: none;
-    transform: translateX(5px);
-} */
+.card-effect:hover {
+    box-shadow: 20px 50px 50px rgba(0,0,0,0.1);
+    transform: translateX(10px);
+}
 
 .iconbox {
     width: 54px;
