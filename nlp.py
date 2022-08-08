@@ -10,6 +10,7 @@ from tesseract import ocr_image
 import json
 
 def language_process(pages, pdf_name):
+    global data_length
     uploaded_token = []
     
     for i in range(0,pages):
@@ -44,4 +45,14 @@ def language_process(pages, pdf_name):
     with open('./static/json/pdf_name.json', 'w') as o:
         json.dump(data_name, o)
         
+        
     return uploaded_token
+
+def pdf_id_init(current_user):    
+    with open('./static/json/pdf_id.json', 'r') as p:
+        id_for_pdf = json.load(p)
+    
+    id_for_pdf[data_length] = current_user
+    
+    with open('./static/json/pdf_id.json', 'w') as x:
+        json.dump(id_for_pdf, x)

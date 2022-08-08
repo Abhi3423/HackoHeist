@@ -59,7 +59,7 @@
                     </li>
                 </ul>
                <a href="/show_projects"><button type="button" class="btn btn-outline-secondary mx-2" style="border-radius: 15px 15px 15px 15px ;">View Projects</button></a>
-                <button class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>
+               <a href="/login" id="join">
             </div>
         </div>
     </nav>
@@ -71,7 +71,7 @@
                     <h1 class="display-4 text-white" style="font-style:inherit">Looking for the best place to save and share projects?</h1>
                     <p class="text-white my-3">We are caretaker of your projects in which you have put lots of hardwork,
                         We present it,save it and show its originality</p>
-                    <a href="#" class="btn me-2 btn-primary">Join Us</a>
+                    <a href="/login" class="btn me-2 btn-primary">Join Us</a>
                     <a href="/show_projects" class="btn btn-outline-light">View Projects</a>
                 </div>
             </div>
@@ -95,8 +95,11 @@
                             <i class='bx bxs-check-shield'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Originality</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>Wanna Know Your Project Uniqueness ??<br>
+                           Just Upload To DocLab<br>
+                           We have our own Plagiarism checker which checks from thousands of data. <br>
+                           And tells from whom and how much percentage of your data is plagiarised to.<br>
+                           </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -105,8 +108,11 @@
                             <i class='bx bxs-comment-detail'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Informative</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>We are a hub of projects uploaded by peoples from different Insitutions.<br>
+                           We provide you the varities of projects and also tell you which is how much Original. <br>
+                           We have made the sea of Knowledge for you. <br>
+                           Just take a dive and explore.<br>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -115,8 +121,8 @@
                             <i class='bx bxs-rocket'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Recognition</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>Nowadays Hardwork is shown by some real time projects you do and hardwork should be showcased to everyone. <br>
+                           We provide you the platform to Upload your projects and show the world what you have made. <br> </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -125,8 +131,10 @@
                             <i class='bx bxs-doughnut-chart'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Storage</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>Having Storage Problem for your projects ??<br>
+                           DocLab Provide you the Decentralized Network from BlockChain Technology.<br>
+                           You can just upload as much documents you need. <br>
+                            </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -135,8 +143,10 @@
                             <i class='bx bx-accessibility'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Easy to Access</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>Everything you need is just a click away !! <br>
+                           You can just JOIN US and upload your projects. <br>
+                           And can check all Projects under Show Projects menu. <br>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -145,8 +155,9 @@
                             <i class='bx bxs-cog'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Security</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <p>We respect Hardwork behind your Projects !!<br>
+                           So here we come with the Blockchain Technology which provides decentralized network. <br>
+                           Your every set of data is just saved with us. </p>
                     </div>
                 </div>
             </div>
@@ -218,5 +229,50 @@
         </div>
         </section>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const navbar_join = document.getElementById('join')
+
+        current_user = {{ current_user_id | tojson}}
+        console.log(typeof current_user)
+
+        var id_json
+
+        function data_read(){
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', '/static/json/user_id.json', true)
+        
+            xhr.onload = function () {
+                jsondata = JSON.parse(this.responseText)
+        
+                id_json = jsondata
+            }
+            xhr.send()
+            return 0
+        }
+
+        async function data_load() {
+            const id_data = await data_read()
+            const mytimeout = setTimeout(rundata, 2000)
+        }
+
+        function rundata() {
+            console.log(id_json)
+            navbar_join.innerHTML = `<a  style='font-weight: 1000;font-size: 20px;'> ${id_json[current_user]["user_name"]}
+                                     <img src="${id_json[current_user]["user_dp"]}" style='border-radius: 50%;height: 32px;width: 32px;margin-left:6px'></a>`
+        }
+
+
+        if( current_user == "not_defined") {
+            navbar_join.innerHTML = `<button href="/login" class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>`
+        }
+        else {
+            data_load()
+        }
+
+
+    </script>
+
+    
 </body>
 </html>

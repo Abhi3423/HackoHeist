@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="/static/css/projectstyle.css">
 
+
     <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
 
     <title>DocLab|Projects</title>
@@ -35,7 +36,7 @@
                     <a class="nav-link" href="#view_projects" style="font-size: 18px;">Projects</a>
                 </li>
             </ul>
-            <button class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>
+            <a href="/login" id="join">
         </div>
     </div>
 </nav>
@@ -48,7 +49,7 @@
                 <h1 class="display-4 text-white" style="font-style:inherit">Don`t worry about your projects, they are safe with us!</h1>
                 <p class="text-white my-3">We are caretaker of your projects in which you have put lots of hardwork,
                     We present it,save it and show its originality</p>
-                <a href="#" class="btn me-2 btn-primary">Join Us</a>
+                <a href="/login" class="btn me-2 btn-primary">Join Us</a>
                 <a href="#view_projects" class="btn btn-outline-light">View Projects</a>
             </div>
         </div>
@@ -190,14 +191,6 @@
                             <img src="/static/images/pdf_images/${name_json[i]}/page2.jpg" class="d-block w-100 h-100" alt="Thats the end of file">
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="false" style="width:20px;background-color:black"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="false" style="width:20px;background-color:black"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
                       </div>
                 </div>
                 <div class="card-body">
@@ -217,10 +210,51 @@
 
 
     }
-
-
     run_js()
   </script>
+
+  <script>
+    const navbar_join = document.getElementById('join')
+
+    current_user = {{ current_user_id | tojson}}
+    console.log(typeof current_user)
+
+    var id_json
+
+    function data_read(){
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', '/static/json/user_id.json', true)
+    
+        xhr.onload = function () {
+            jsondata = JSON.parse(this.responseText)
+    
+            id_json = jsondata
+        }
+        xhr.send()
+        return 0
+    }
+
+    async function data_load() {
+        const id_data = await data_read()
+        const mytimeout = setTimeout(rundata, 2000)
+    }
+
+    function rundata() {
+        console.log(id_json)
+        navbar_join.innerHTML = `<a  style='font-weight: 1000;font-size: 20px;'> ${id_json[current_user]["user_name"]}
+                                 <img src="${id_json[current_user]["user_dp"]}" style='border-radius: 50%;height: 32px;width: 32px;margin-left:6px'></a>`
+    }
+
+
+    if( current_user == "not_defined") {
+        navbar_join.innerHTML = `<button href="/login" class="btn btn-primary ms-lg-3" style="border-radius: 15px 15px 15px 15px ;border:5px">Join Us</button>`
+    }
+    else {
+        data_load()
+    }
+
+
+</script>
 
 </body>
 

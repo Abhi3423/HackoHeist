@@ -53,39 +53,38 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse my-2 mx-5" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto  mb-lg-0" style="align-items:center" >
+        <ul class="navbar-nav ms-auto  mb-lg-0" style="align-items:center">
           <div class="profile">
             <hr>
-            <p><img src="/static/images/img1.jpg" alt="" style="width:32px;height:32px;border-radius:50%;"><b
-                style="margin-left:6px">DocLab Member</b></p>
-            <p style="font-size:smaller">Email: doclabmember@gmail.com</p>
-            <p style="font-size:small;background-color:rgb(202, 222, 239)">Total number of doccuments uploade: 100</p>
+            <p id="info"></p>
+            <p id="mail"></p>
+            <p id="count" style="font-size:small;background-color:rgb(202, 222, 239)">Total number of documents uploaded: none</p>
             <hr>
           </div>
-          <li class="nav-item" style="align-items:center" >
+          <li class="nav-item" style="align-items:center">
             <a class="nav-link active" aria-current="page" href="/"
               style="color:black; font-weight:bold;font-size:larger;">Home</a>
-              <hr>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#head"
               style="color:black; font-weight:bold;font-size:larger">Upload File</a>
-              <hr>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#projects"
               style="color:black; font-weight:bold;font-size:larger">My Projects</a>
-              <hr>
+            <hr>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/show_projects"
               style="color:black; font-weight:bold;font-size:larger">View Projects</a>
-              <hr>
+            <hr>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/"
+            <a class="nav-link active" aria-current="page" href="/logout"
               style="color:black; font-weight:bold;font-size:larger">Sign Out</a>
-              <hr>
+            <hr>
           </li>
           <hr id="line" style="color:black">
         </ul>
@@ -94,9 +93,9 @@
     </div>
   </nav>
 
-  <div class="shadow-sm p-3 mb-5 bg-body rounded" id="head">Hi! DocLab Member</div>
-
-
+  <div class="shadow-sm p-3 mb-5 bg-body rounded" style="height:6vh">
+    <p id="name"></p>
+  </div>
   <div class="top">
     <div class="wrapper" id="upload_file">
       <header>File Uploader</header>
@@ -125,8 +124,72 @@
 
   <script>
 
+  </script>
+
+
+
+
+  <script>
+    const navbar_info = document.getElementById('info')
+    const navbar_mail = document.getElementById('mail')
+    const head_name = document.getElementById('name')
+    const doc_count = document.getElementById('count')
+   
+
+    current_user = {{ current_user_id | tojson }}
+    console.log(typeof current_user)
+
+    var id_json
+
+    function data_read() {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', '/static/json/user_id.json', true)
+
+      xhr.onload = function () {
+        jsondata = JSON.parse(this.responseText)
+
+        id_json = jsondata
+      }
+      xhr.send()
+      return 0
+    }
+
+    async function data_load() {
+      const id_data = await data_read()
+      const mytimeout = setTimeout(rundata, 2000)
+    }
+
+    function rundata() {
+      console.log(id_json)
+      navbar_info.innerHTML = `<p><img src="${id_json[current_user]["user_dp"]}" alt="" style="width:32px;height:32px;border-radius:50%;">
+                               <b style="margin-left:6px">${id_json[current_user]["user_name"]}</b></p>`
+
+      navbar_mail.innerHTML = `<p style="font-size:smaller">Email: ${id_json[current_user]["user_email"]}</p>`
+
+      head_name.innerHTML = `<p style="float: right;">Hi! ${id_json[current_user]["user_name"]}</p>`
+      
+    }
+
+
+    if (current_user == "not_defined") {
+      navbar_info.innerHTML = ` <p><img src="/static/images/img1.jpg" alt="" style="width:32px;height:32px;border-radius:50%;">
+                                <b style="margin-left:6px">DocLab Member</b></p>`
+
+      navbar_mail.innerHTML = `<p style="font-size:smaller" >Email: doclabmember@gmail.com</p>`
+
+      head_name.innerHTML = `<p style="float: right;" >Hi! DocLab Member</p>`
+    }
+    else {
+      data_load()
+    }
+
+
+
+
+
     var name_json
     var plager_json
+    var total_count = 0
 
     function ajax() {
       var xhr = new XMLHttpRequest()
@@ -154,10 +217,24 @@
       return 0
     }
 
+    function ajax3() {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', '/static/json/pdf_id.json', true)
+
+      xhr.onload = function () {
+        jsondata3 = JSON.parse(this.responseText)
+
+        pdfid_json = jsondata3
+      }
+
+      xhr.send()
+      return 0
+    }
+
 
     async function downloader(pointer) {
 
-      const pdf_response = await fetch(`/`, { method: 'POST', body: String(pointer), headers: { 'Content-Type': 'text/plain' } })
+      const pdf_response = await fetch(`/show_projects`, { method: 'POST', body: String(pointer), headers: { 'Content-Type': 'text/plain' } })
 
       const response = await pdf_response.blob()
 
@@ -181,6 +258,7 @@
     async function run_js() {
       const fist = await ajax()
       const fist2 = await ajax2()
+      const fist3 = await ajax3()
       const mytimeout = setTimeout(addbox, 1500)
     }
 
@@ -188,12 +266,16 @@
       console.log(name_json)
       var nopdf = Object.keys(name_json).length
       for (let i = 1; i < nopdf; i++) {
-        const div = document.createElement('div');
 
-        div.className = "col-md-4";
+        if (pdfid_json[i] === current_user) {
+
+          total_count = total_count + 1
+
+          const div = document.createElement('div');
+          div.className = "col-md-4";
 
 
-        div.innerHTML = `
+          div.innerHTML = `
               <div class=" mt-4">
                 <span class="card" style="width: 18rem; border-radius:10px 10px 10px 10px">
                   <div class="card-img-top">
@@ -228,10 +310,14 @@
               </div>
             `;
 
-        document.getElementById('boxes').appendChild(div);
+          document.getElementById('boxes').appendChild(div);
 
+        }
 
+        else{}
       }
+      
+      doc_count.innerHTML = `<p style="font-size:small;background-color:rgb(202, 222, 239)">Total number of documents uploaded: ${total_count}</p>`
 
 
 
@@ -248,3 +334,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

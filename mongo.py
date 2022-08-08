@@ -1,6 +1,3 @@
-# from fileinput import filename
-# import pymongo
-# import base64
 import gridfs
 import base64
 from pymongo import MongoClient
@@ -15,45 +12,7 @@ def get_database():
 
     # Create the database for our example (we will use the same database throughout the tutorial
     return client['pdf_store']
-
-
-
-# def write_new_pdf():
-#     path = 'pyth.pdf'
-#     print(path)
-#     db = client.storagearea
-#     fs = gridfs.GridFS(db)
-#     # Note, open with the "rb" flag for "read bytes"
-#     with open(path, "rb") as f:
-#         encoded_string = base64.b64encode(f.read())
-#     with fs.new_file(chunkSize=800000,filename=path) as fp:
-#         fp.write(encoded_string)
-
-# def try_read():
-#     file_name = './Pdfs/Trial1.pdf'
-#     grid_fs_file = grid_fs.find_one({'filename': file_name})
-#     response = make_response(grid_fs_file.read())
-#     response.headers['Content-Type'] = 'application/octet-stream'
-#     response.headers["Content-Disposition"] = "attachment; filename={}".format(file_name)
-#     return response
-
-
-# def read_pdf():
-#     # Usual setup
-#     # db = MongoClient('mongodb://localhost:27017/').myDB
-#     filename = './Pdfs/Trial1.pdf'
-#     fs = gridfs.GridFS(dbname)
-#     # Standard query to Mongo
-#     data = fs.find_one(filter=dict(filename=filename))
-#     with open(filename, "wb") as f:
-#         f.write(base64.b64decode(data.read()))
-#     return data
-        
-
-
- 
-# This is added so that many files can reuse the function get_database()
-# if __name__ == "__main__":    
+  
 
 def mongo_pdf(encoded_string, name): 
 # Get the database
@@ -75,10 +34,7 @@ def download(name_of_pdf):
     
     for i in cursor:
         dict = i
-        # print(i)
-        # print(type(i))
-       
-    # print(dict['_id'])  
+     
     
     
     chunks_cursor = db.fs.chunks.find({'files_id': dict['_id'] })
@@ -99,13 +55,3 @@ def download(name_of_pdf):
     return base64.b64decode(data_pdf)
     
     
-    
-    
-    
-# def downl():
-#     file_name = 'pyimg.pdf'
-#     grid_fs_file = grid_fs.find_one({'filename': file_name})
-#     response = make_response(grid_fs_file.read())
-#     response.headers['Content-Type'] = 'application/octet-stream'
-#     response.headers["Content-Disposition"] = "attachment; filename={}".format(file_name)
-#     return response   
