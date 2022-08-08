@@ -1,6 +1,6 @@
 from flask import Flask, request,session,abort, redirect,render_template, jsonify
 from flask_cors import CORS, cross_origin
-# from werkzeug.utils import secure_filename
+
 from mongo import mongo_pdf, download
 import base64
 import json
@@ -123,11 +123,6 @@ def callback():
         audience=GOOGLE_CLIENT_ID
     )
     
-    print(id_info.get("sub"))
-    print(id_info.get("name"))
-    print(id_info.get("email"))
-    print(id_info.get("picture"))
-    print(id_info.get("gender"))
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     session["email"] = id_info.get("email")
